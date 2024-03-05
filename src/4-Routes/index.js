@@ -10,6 +10,8 @@ import About from '../6-Views/3About/About';
 import Press from '../6-Views/4Press/Press';
 import ContactUs from '../6-Views/5ContactUs/ContactUs';
 import Films from '../6-Views/6Films/Films';
+import FilmDetails from '../6-Views/7FilmDetails/FilmDetails';
+import WatchFilm from '../6-Views/8WatchFilm/WatchFilm';
 const AllRoutes = () => {
   return (
     <BrowserRouter basename="/">
@@ -65,6 +67,20 @@ const AllRoutes = () => {
           exact
           path="/films"
           element={<Films />}
+          errorElement={<ErrorPage />}
+        />
+
+        <Route
+          exact
+          path="/films/filmId"
+          element={<FilmDetails />}
+          errorElement={<ErrorPage />}
+        />
+
+        <Route
+          exact
+          path="/films/filmId/watch"
+          element={<WatchFilm />}
           errorElement={<ErrorPage />}
         />
       </Routes>

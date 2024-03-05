@@ -41,11 +41,7 @@ const HeroCarousel = () => {
   const { selectedIndex, scrollSnaps, onDotButtonClick } =
     useDotButton(emblaApi);
 
-  // const setTweenNodes = React.useCallback((emblaApi) => {
-  //   tweenNodes.current = emblaApi.slideNodes().map((slideNode) => {
-  //     return slideNode.querySelector(".embla__parallax__layer");
-  //   });
-  // }, []);
+ 
 
   const setTweenFactor = React.useCallback((emblaApi) => {
     tweenFactor.current = TWEEN_FACTOR_BASE * emblaApi.scrollSnapList().length;
@@ -60,10 +56,10 @@ const HeroCarousel = () => {
     emblaApi.scrollSnapList().forEach((scrollSnap, snapIndex) => {
       let diffToTarget = scrollSnap - scrollProgress;
       const slidesInSnap = engine.slideRegistry[snapIndex];
-      let slideEqual = false;
+ 
       slidesInSnap.forEach((slideIndex) => {
         if (isScrollEvent && !slidesInView.includes(slideIndex)) return;
-slideEqual = !slidesInView.includes(slideIndex);
+
         if (engine.options.loop) {
           engine.slideLooper.loopPoints.forEach((loopItem) => {
             const target = loopItem.target();
@@ -89,48 +85,11 @@ slideEqual = !slidesInView.includes(slideIndex);
     });
   }, []);
 
-  // const tweenParallax = React.useCallback((emblaApi, eventName) => {
-  //   const engine = emblaApi.internalEngine();
-  //   const scrollProgress = emblaApi.scrollProgress();
-  //   const slidesInView = emblaApi.slidesInView();
-  //   const isScrollEvent = eventName === "scroll";
 
-  //   emblaApi.scrollSnapList().forEach((scrollSnap, snapIndex) => {
-  //     let diffToTarget = scrollSnap - scrollProgress;
-  //     const slidesInSnap = engine.slideRegistry[snapIndex];
-
-  //     slidesInSnap.forEach((slideIndex) => {
-  //       if (isScrollEvent && !slidesInView.includes(slideIndex)) return;
-
-  //       if (engine.options.loop) {
-  //         engine.slideLooper.loopPoints.forEach((loopItem) => {
-  //           const target = loopItem.target();
-
-  //           if (slideIndex === loopItem.index && target !== 0) {
-  //             const sign = Math.sign(target);
-
-  //             if (sign === -1) {
-  //               diffToTarget = scrollSnap - (1 + scrollProgress);
-  //             }
-  //             if (sign === 1) {
-  //               diffToTarget = scrollSnap + (1 - scrollProgress);
-  //             }
-  //           }
-  //         });
-  //       }
-
-  //       const translate = diffToTarget * (-1 * tweenFactor.current) * 100;
-  //       const tweenNode = tweenNodes.current[slideIndex];
-  //       tweenNode.style.transform = `translateX(${translate}%)`;
-  //     });
-  //   });
-  // }, []);
 
   React.useEffect(() => {
     if (!emblaApi) return;
-    // setTweenNodes(emblaApi);
-    // setTweenFactor(emblaApi);
-    // tweenParallax(emblaApi);
+  
     setTweenFactor(emblaApi);
     tweenOpacity(emblaApi);
     emblaApi
