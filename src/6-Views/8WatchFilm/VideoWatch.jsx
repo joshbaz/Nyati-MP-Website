@@ -14,7 +14,7 @@ const VideoWatch = () => {
         className="text-center items-center mx-auto w-full  mt-[99px]"
       >
         <Box
-          className="w-full max-w-[1200px] "
+          className="w-full max-w-[1200px]"
           style={{ position: "relative" }}
         >
           <Stack
@@ -23,7 +23,7 @@ const VideoWatch = () => {
             style={{ fontFamily: vTextStyle.iRegular }}
           >
             <Box>
-              <IoChevronBack size={26} />
+              <IoChevronBack size={26} /> 
             </Box>
             <Box>Watch</Box>
             <Box>/</Box>
