@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 
+@font-face {
+  font-family: 'Roboto-Medium';
+  src: local('Roboto-Medium'), url('./1-Assets/fonts/Roboto/Roboto-Medium.ttf') format('truetype');
+}
 
 @font-face {
   font-family: 'SegoeUI-Bold-Italic';

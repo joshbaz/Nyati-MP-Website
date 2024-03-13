@@ -13,6 +13,8 @@ import Films from '../6-Views/6Films/Films';
 import FilmDetails from '../6-Views/7FilmDetails/FilmDetails';
 import WatchFilm from '../6-Views/8WatchFilm/WatchFilm';
 import Tickets from '../6-Views/9Tickets/Tickets';
+import TicketBooking from '../6-Views/10TicketBooking/TicketBooking';
+import CheckOut from '../6-Views/11Checkout/CheckOut';
 const AllRoutes = () => {
   return (
     <BrowserRouter basename="/">
@@ -89,6 +91,20 @@ const AllRoutes = () => {
           exact
           path="/theatres"
           element={<Tickets />}
+          errorElement={<ErrorPage />}
+        />
+
+        <Route
+          exact
+          path="/theatres/booking"
+          element={<TicketBooking />}
+          errorElement={<ErrorPage />}
+        />
+
+        <Route
+          exact
+          path="/theatres/booking/checkout"
+          element={<CheckOut />}
           errorElement={<ErrorPage />}
         />
       </Routes>

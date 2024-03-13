@@ -17,6 +17,8 @@ export const vTextStyle = {
   sItalics: "SegoeUI-Italic",
   sRegular: "Segoe UI",
 
+  rMedium: "Roboto-Medium",
+
   iBlack: "Inter-Black",
   iBold: "Inter-Bold",
   iExtraBold: "Inter-ExtraBold",
