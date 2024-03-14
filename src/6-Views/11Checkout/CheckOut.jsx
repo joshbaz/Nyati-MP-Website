@@ -1,5 +1,5 @@
 import React from "react";
-import { Stack, Box } from "@chakra-ui/react";
+import { Stack, Box, Divider, VStack } from "@chakra-ui/react";
 import styled from "styled-components";
 import WebNavigation from "../../2-Components/1Navigation/WebNavigation";
 import Footer from "../../2-Components/2Footer/Footer";
@@ -29,12 +29,11 @@ const CheckOut = () => {
   const [personalData, setPersonalData] = React.useState({
     firstname: "",
     lastname: "",
-   
+
     mobilenumber: "",
-   
+
     email: "",
     address: "",
-   
   });
 
   const [paymentData, setPaymentData] = React.useState({
@@ -126,7 +125,7 @@ const CheckOut = () => {
     <Container spacing={"0"}>
       <WebNavigation />
 
-      <StackContainer direction="column" spacing={"0"}>
+      <StackContainer direction="column" spacing={"0"} className="bg-green-400">
         {/** top stepper */}
         <Box className="pt-[90px] bg-[#18161C]">
           <Box className="h-[70px] flex justify-center w-full bg-[#1C1921] items-center text-center">
@@ -137,9 +136,18 @@ const CheckOut = () => {
             />
           </Box>
         </Box>
-        <Stack direction="row" spacing={"0"} className="w-full h-full">
+
+        <Stack
+          direction="row"
+          spacing={"0"}
+          className="w-full h-full grow relative m-0 p-0"
+        >
           {/** forms */}
-          <Stack direction="column" className="w-full">
+          <Stack
+            h="unset"
+            direction="column"
+            className="w-full h border-r-2 px-[10%] py-[3%] "
+          >
             <Box className="w-full">
               <CheckoutStepperContext.Provider
                 value={{
@@ -166,7 +174,53 @@ const CheckOut = () => {
               </Box>
             </Box>
           </Stack>
+
           {/** summary of booking */}
+          <Stack
+            direction="column"
+            spacing={'10px'}
+            className="min-w-[484px] px-[5%] py-[3%] m-0 p-0 2xl:px-[1%] 2xl:py-[1%]"
+          >
+            <h1
+              className="text-[#141118] text-[21px]"
+              style={{ fontFamily: vTextStyle.iSemiBold }}
+            >
+              Summary of your Booking
+            </h1>
+
+            <Stack direction="column">
+              <Stack
+                direction="column"
+                className="max-w-[378px] rounded-[7px] bg-[#f2f2f2] items-left px-[35px] py-[25px] "
+              >
+                <h1
+                  className="text-[21px] text-[#151118]"
+                  style={{ fontFamily: vTextStyle.iSemiBold }}
+                >
+                  About your ticket
+                </h1>
+                <Stack
+                  direction="column"
+                  spacing={"10px"}
+                  style={{ fontFamily: vTextStyle.iSemiBold }}
+                  className="text-[17px] text-[#808080] leading-tight"
+                >
+                  <Box className="flex">
+                    <p className="w-[93px]">Film </p>:{" "}
+                    <p className="ticketText">Tuko Pamoja</p>
+                  </Box>
+                  <Box className="flex">
+                    <p className="w-[93px]">Segment </p> :
+                    <p className="ticketText">Bunyoro-Kitara</p>
+                  </Box>
+                  <Box className="flex">
+                    <p className="w-[93px]">Location </p> :
+                    <p className="ticketText">National Theatre</p>
+                  </Box>
+                </Stack>
+              </Stack>
+            </Stack>
+          </Stack>
         </Stack>
       </StackContainer>
       <Footer />
@@ -190,7 +244,16 @@ const Container = styled(Stack)`
 `;
 
 const StackContainer = styled(Stack)`
-  height: 100%;
+  height: 100% !important;
   min-height: 100vh;
   background: #ffffff;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  position: relative;
+  overflow: hidden;
+
+  .ticketText {
+    padding-left: 5px;
+    font-family: ${vTextStyle.iMedium};
+  }
 `;

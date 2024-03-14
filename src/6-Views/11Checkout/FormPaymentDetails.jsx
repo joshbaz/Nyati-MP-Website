@@ -26,7 +26,7 @@ const FormPaymentDetails = ({ innerref, handleStepNext }) => {
     >
       {({ values, handleChange, errors, touched }) => (
         <Form>
-          <Stack>
+          <Stack className="h-full">
             <h1
               className="text-[#101828] text-[18px]"
               style={{ fontFamily: vTextStyle.sSemiBold }}
