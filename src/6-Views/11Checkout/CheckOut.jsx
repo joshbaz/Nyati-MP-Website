@@ -9,6 +9,7 @@ import FormPersonalInfo from "./FormPersonalInfo";
 import FormPaymentDetails from "./FormPaymentDetails";
 import { CheckoutStepperContext } from "../../5-Store/Contexts/Checkout";
 import StepperControlsCheckout from "../../2-Components/5Checkout/StepperControlsCheckout";
+import MTNImage from '../../1-Assets/images/Checkout/MTN.png'
 
 const CheckOut = () => {
   const stepperArray = [
@@ -178,7 +179,7 @@ const CheckOut = () => {
           {/** summary of booking */}
           <Stack
             direction="column"
-            spacing={'10px'}
+            spacing={"20px"}
             className="min-w-[484px] px-[5%] py-[3%] m-0 p-0 2xl:px-[1%] 2xl:py-[1%]"
           >
             <h1
@@ -199,6 +200,7 @@ const CheckOut = () => {
                 >
                   About your ticket
                 </h1>
+
                 <Stack
                   direction="column"
                   spacing={"10px"}
@@ -216,6 +218,37 @@ const CheckOut = () => {
                   <Box className="flex">
                     <p className="w-[93px]">Location </p> :
                     <p className="ticketText">National Theatre</p>
+                  </Box>
+                </Stack>
+              </Stack>
+            </Stack>
+
+            {/** About payment */}
+            <Stack direction="column">
+              <Stack
+                direction="column"
+                className="max-w-[378px] rounded-[7px] bg-[#f2f2f2] items-left px-[35px] py-[25px] "
+              >
+                <h1
+                  className="text-[21px] text-[#151118]"
+                  style={{ fontFamily: vTextStyle.iSemiBold }}
+                >
+                  About your payment
+                </h1>
+
+                <Stack
+                  direction="column"
+                  spacing={"10px"}
+                  style={{ fontFamily: vTextStyle.iSemiBold }}
+                  className="text-[17px] text-[#808080] leading-tight"
+                >
+                  <Box className="flex">
+                    <p className="w-[170px]">Method of Payment</p>:{" "}
+                    <p className="ticketText">MTN</p>
+                  </Box>
+
+                  <Box className="flex w-[99px] h-[58px]">
+                    <img src={MTNImage} alt={"MTN MoMo"} />
                   </Box>
                 </Stack>
               </Stack>

@@ -34,8 +34,8 @@ const FormPersonalInfo = ({ innerref, handleStepNext }) => {
         <Form>
           <Stack>
             <h1
-              className="text-[#101828] text-[18px]"
-              style={{ fontFamily: vTextStyle.sSemiBold }}
+              className="text-[#101828] text-[21px]"
+              style={{ fontFamily: vTextStyle.iSemiBold }}
             >
               Checkout Details
             </h1>
