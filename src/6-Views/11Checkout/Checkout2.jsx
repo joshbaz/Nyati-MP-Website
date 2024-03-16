@@ -9,10 +9,12 @@ import FormPersonalInfo from "./FormPersonalInfo";
 import FormPaymentDetails from "./FormPaymentDetails";
 import { CheckoutStepperContext } from "../../5-Store/Contexts/Checkout";
 import StepperControlsCheckout from "../../2-Components/5Checkout/StepperControlsCheckout";
-import MTNImage from '../../1-Assets/images/Checkout/MTN.png'
+import MTNImage from "../../1-Assets/images/Checkout/MTN.png";
+import FormPersonalInfo2 from "./FormPersonalInfo2";
 import FormPaymentDetails2 from "./FormPaymentDetails2";
+import FormConfirmation from "./FormConfirmation";
 
-const CheckOut = () => {
+const Checkout2 = () => {
   const stepperArray = [
     {
       title: "Personal Info.",
@@ -31,11 +33,10 @@ const CheckOut = () => {
   const [personalData, setPersonalData] = React.useState({
     firstname: "",
     lastname: "",
-
     mobilenumber: "",
-
     email: "",
     address: "",
+    paymentMethod: "",
   });
 
   const [paymentData, setPaymentData] = React.useState({
@@ -100,9 +101,13 @@ const CheckOut = () => {
     switch (step) {
       case "Personal Info.":
         return (
-          <FormPersonalInfo
+          <FormPersonalInfo2
             innerref={formRef}
             handleStepNext={handleStepNext}
+            stepperData={stepperArray}
+            currentStep={currentStep}
+            handleStepPrev={handleStepPrev}
+            handleFormSubmit={handleFormSubmit}
           />
         );
       case "Payment":
@@ -110,13 +115,21 @@ const CheckOut = () => {
           <FormPaymentDetails2
             innerref={formRef}
             handleStepNext={handleStepNext}
+            stepperData={stepperArray}
+            currentStep={currentStep}
+            handleStepPrev={handleStepPrev}
+            handleFormSubmit={handleFormSubmit}
           />
         );
       case "Confirmation":
         return (
-          <FormPersonalInfo
+          <FormConfirmation
             innerref={formRef}
             handleStepNext={handleStepNext}
+            stepperData={stepperArray}
+            currentStep={currentStep}
+            handleStepPrev={handleStepPrev}
+            handleFormSubmit={handleFormSubmit}
           />
         );
       default:
@@ -139,124 +152,25 @@ const CheckOut = () => {
           </Box>
         </Box>
 
-        
-
+        {/** forms */}
         <Stack
           direction="row"
           spacing={"0"}
           className="w-full h-full grow relative m-0 p-0"
         >
-          {/** forms */}
-          <Stack
-            h="unset"
-            direction="column"
-            className="w-full h border-r-2 px-[10%] py-[3%] "
-          >
-            <Box className="w-full">
-              <CheckoutStepperContext.Provider
-                value={{
-                  personalData,
-                  setPersonalData,
-                  paymentData,
-                  setPaymentData,
-                }}
-              >
-                {FormDisplay(stepsAllComplete ? "Complete" : currentStep)}
-              </CheckoutStepperContext.Provider>
-            </Box>
-
-            {/** stepper controls */}
-            <Box className="w-full flex justify-end">
-              <Box className="w-max">
-                <StepperControlsCheckout
-                  handleStepNext={handleStepNext}
-                  stepperData={stepperArray}
-                  currentStep={currentStep}
-                  handleStepPrev={handleStepPrev}
-                  handleFormSubmit={handleFormSubmit}
-                />
-              </Box>
-            </Box>
-          </Stack>
-
-          {/** summary of booking */}
-          <Stack
-            direction="column"
-            spacing={"20px"}
-            className="min-w-[484px] px-[5%] py-[3%] m-0 p-0 2xl:px-[1%] 2xl:py-[1%]"
-          >
-            <h1
-              className="text-[#141118] text-[21px]"
-              style={{ fontFamily: vTextStyle.iSemiBold }}
+          
+          <Box className="w-full">
+            <CheckoutStepperContext.Provider
+              value={{
+                personalData,
+                setPersonalData,
+                paymentData,
+                setPaymentData,
+              }}
             >
-              Summary of your Booking
-            </h1>
-
-            <Stack direction="column">
-              <Stack
-                direction="column"
-                className="max-w-[378px] rounded-[7px] bg-[#f2f2f2] items-left px-[35px] py-[25px] "
-              >
-                <h1
-                  className="text-[21px] text-[#151118]"
-                  style={{ fontFamily: vTextStyle.iSemiBold }}
-                >
-                  About your ticket
-                </h1>
-
-                <Stack
-                  direction="column"
-                  spacing={"10px"}
-                  style={{ fontFamily: vTextStyle.iSemiBold }}
-                  className="text-[17px] text-[#808080] leading-tight"
-                >
-                  <Box className="flex">
-                    <p className="w-[93px]">Film </p>:{" "}
-                    <p className="ticketText">Tuko Pamoja</p>
-                  </Box>
-                  <Box className="flex">
-                    <p className="w-[93px]">Segment </p> :
-                    <p className="ticketText">Bunyoro-Kitara</p>
-                  </Box>
-                  <Box className="flex">
-                    <p className="w-[93px]">Location </p> :
-                    <p className="ticketText">National Theatre</p>
-                  </Box>
-                </Stack>
-              </Stack>
-            </Stack>
-
-            {/** About payment */}
-            <Stack direction="column">
-              <Stack
-                direction="column"
-                className="max-w-[378px] rounded-[7px] bg-[#f2f2f2] items-left px-[35px] py-[25px] "
-              >
-                <h1
-                  className="text-[21px] text-[#151118]"
-                  style={{ fontFamily: vTextStyle.iSemiBold }}
-                >
-                  About your payment
-                </h1>
-
-                <Stack
-                  direction="column"
-                  spacing={"10px"}
-                  style={{ fontFamily: vTextStyle.iSemiBold }}
-                  className="text-[17px] text-[#808080] leading-tight"
-                >
-                  <Box className="flex">
-                    <p className="w-[170px]">Method of Payment</p>:{" "}
-                    <p className="ticketText">MTN</p>
-                  </Box>
-
-                  <Box className="flex w-[99px] h-[58px]">
-                    <img src={MTNImage} alt={"MTN MoMo"} />
-                  </Box>
-                </Stack>
-              </Stack>
-            </Stack>
-          </Stack>
+              {FormDisplay(stepsAllComplete ? "Complete" : currentStep)}
+            </CheckoutStepperContext.Provider>
+          </Box>
         </Stack>
       </StackContainer>
       <Footer />
@@ -264,7 +178,7 @@ const CheckOut = () => {
   );
 };
 
-export default CheckOut;
+export default Checkout2;
 
 const Container = styled(Stack)`
   width: 100vw;

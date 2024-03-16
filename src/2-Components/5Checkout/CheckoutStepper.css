@@ -15,27 +15,42 @@
 }
 
 
-.step {
+.steps {
     @apply w-[20px] h-[20px] flex items-center justify-center z-10 relative bg-[#F2F2F2] rounded-full text-white;
 }
 
-.outerStep {
-    @apply w-[14px] h-[14px] bg-[#1C1921] rounded-full flex items-center justify-center transition duration-500 ease-in-out;
+.outerSteps {
+    @apply w-[16px] h-[16px] bg-[#1C1921] rounded-full flex items-center justify-center transition duration-500 ease-in-out;
 }
 
-.innerStep {
-    @apply w-[50%] h-[50%] bg-[#1C1921] rounded-full;
+.innerSteps {
+    @apply w-[8px] h-[8px] bg-[#1C1921] rounded-full;
 }
 
-.active > .title {
+.complete > .title, .active > .title {
 color: rgb(242, 242, 242);
 }
 
-
-.active:before {
-    @apply bg-red-700;
+.active .steps {
+    @apply bg-[#EE5170];
+}
+.complete .innerSteps {
+    @apply bg-[#EE5170];
 }
 
-.active:last-child:after {
-    @apply content-[""] z-0 bg-red-700 absolute h-[3px] w-full bottom-[20%] left-[0%] translate-x-[50%];
+.complete .steps {
+    @apply bg-[#EE5170];
+}
+
+.active .innerSteps {
+    @apply bg-[#EE5170];
+}
+
+
+.complete:before, .active:before {
+    @apply bg-[#EE5170];
+}
+
+.complete:last-child:after {
+    @apply content-[""] z-0 bg-[#EE5170] absolute h-[3px] w-full bottom-[20%] left-[0%] translate-x-[50%];
 }
